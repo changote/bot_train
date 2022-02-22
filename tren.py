@@ -1,3 +1,4 @@
+from re import I
 import time
 import winsound
 from selenium import webdriver
@@ -30,7 +31,7 @@ time.sleep(0.5)
 WebDriverWait(browser, 5)\
     .until(EC.element_to_be_clickable((By.CSS_SELECTOR,
                                        'input#origen-selectized')))\
-    .send_keys('Cnel. Vidal', Keys.ENTER)
+    .send_keys('Buenos Aires', Keys.ENTER)
 
 time.sleep(0.5)
 
@@ -38,19 +39,25 @@ time.sleep(0.5)
 WebDriverWait(browser, 5)\
     .until(EC.element_to_be_clickable((By.CSS_SELECTOR,
                                        'input#destino-selectized')))\
-    .send_keys('Buenos Aires', Keys.ENTER)
+    .send_keys('Mar del Plata', Keys.ENTER)
 
 time.sleep(0.5)
 
 #Moviendo en el calendario
 browser.find_element(By.XPATH,'//*[@id="form_busqueda"]/div/div[4]/div[1]/div[1]/a/span')\
     .click()
+#Moverse cant de meses
+i=0
+cant=1
 
-#browser.find_element(By.XPATH,'//*[@id="datepicker-calendar-fecha_ida"]/div[1]/div[2]')\
-  #  .click()
+while(i<cant):
+    browser.find_element(By.XPATH,'//*[@id="datepicker-calendar-fecha_ida"]/div[1]/div[2]')\
+        .click()
+    i+=1
+
 
 #Fecha de ida
-browser.find_element(By.XPATH,'//*[@id="cell9-fecha_ida"]')\
+browser.find_element(By.XPATH,'//*[@id="cell2-fecha_ida"]')\
     .click()
 
 #Cant de adultos
